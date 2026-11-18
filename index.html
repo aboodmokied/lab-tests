@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Central Laboratory Test List: PCR and Serology</title><link rel="stylesheet" href="style.css"></head><body>
+<header><h1 id="ttl">Central Laboratory Test List: PCR and Serology</h1><p id="sub"></p></header>
+<main id="app"><div class="empty">Loading…</div></main>
+<script>
+var D=null;
+function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+var TUBE='<svg viewBox="0 0 64 64" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"><rect x="24" y="6" width="16" height="10" rx="3" fill="#fff" fill-opacity=".3"/><path d="M26 16v32a6 6 0 0 0 12 0V16"/><path d="M26 34h12" /></svg>';
+var DNA='<svg viewBox="0 0 64 64" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"><path d="M20 6c0 14 24 14 24 28S20 48 20 58M44 6c0 14-24 14-24 28S44 48 44 58"/><path d="M26 14h12M24 32h16M26 50h12"/></svg>';
+function load(){
+  fetch('data.json?'+Date.now()).then(function(r){if(!r.ok)throw 0;return r.json()}).then(function(d){D=d;
+    document.getElementById('ttl').textContent=d.title||'';document.getElementById('sub').textContent=d.subtitle||'';
+    route();}).catch(function(){document.getElementById('app').innerHTML='<div class="empty">Could not load the test list. Check your connection and refresh.</div>'});
+}
+function route(){
+  if(!D)return;var h=(location.hash||'').replace('#','');var p=h.split('/');var app=document.getElementById('app');
+  if(p[0]&&D.lists[p[0]]){var L=D.lists[p[0]];
+    if(p[1]){var it=L.items.filter(function(x){return x.id===p[1]})[0];if(it){app.innerHTML=detail(p[0],L,it);window.scrollTo(0,0);return}}
+    app.innerHTML=list(p[0],L);window.scrollTo(0,0);return}
+  app.innerHTML='<div class="big"><button class="bigbtn pcr" onclick="location.hash=\'pcr\'">'+DNA+'PCR<small>'+D.lists.pcr.items.length+' groups &amp; tests</small></button>'+
+   '<button class="bigbtn ser" onclick="location.hash=\'serology\'">'+TUBE+'Serology<small>'+D.lists.serology.items.length+' groups &amp; tests</small></button></div>'+
+   '<div class="foot">Updated '+esc(D.updated||'')+'</div>';
+}
+function list(k,L){
+  var t='<div class="'+(k==='serology'?'ser-theme':'')+'"><div class="bar"><button class="back" onclick="location.hash=\'\'">‹ Back</button><h2>'+esc(L.title)+'</h2></div>'+
+   '<input class="search" id="q" placeholder="Search test or pathogen" oninput="filt()"><div class="grid" id="g">';
+  L.items.forEach(function(it){var ic=it.icon||(it.tests[0]&&it.tests[0].specimens[0]&&it.tests[0].specimens[0].icon)||'serum';
+    var names=it.tests.map(function(x){return x.name}).join(' ');
+    t+='<button class="tile" data-s="'+esc((it.name+' '+it.summary+' '+names).toLowerCase())+'" onclick="location.hash=\''+k+'/'+it.id+'\'">'+(it.kind==='panel'?'<span class="badge">PANEL</span>':'')+
+     '<img src="icons/'+esc(ic)+'.png" alt=""><b>'+esc(it.name)+'</b>'+(it.summary?'<span>'+esc(it.summary)+'</span>':'')+'</button>';});
+  return t+'</div><div class="foot">Updated '+esc(D.updated||'')+'</div></div>';
+}
+function filt(){var q=document.getElementById('q').value.toLowerCase().trim();document.querySelectorAll('#g .tile').forEach(function(e){e.style.display=(!q||e.getAttribute('data-s').indexOf(q)>-1)?'':'none'})}
+function storage(s){if(!s.first72&&!s.after72)return'';return'<div class="store"><i>First 72 h:</i> '+esc(s.first72)+'<br><i>Then:</i> '+esc(s.after72)+'</div>'}
+function detail(k,L,it){
+  var t='<div class="'+(k==='serology'?'ser-theme':'')+'"><div class="bar"><button class="back" onclick="location.hash=\''+k+'\'">‹ Back</button><h2>'+esc(it.name)+'</h2></div>';
+  it.tests.forEach(function(x){
+    t+='<div class="card">'+(it.tests.length>1||it.kind==='panel'?'<h3>'+esc(x.name)+'</h3>':'')+
+     '<div class="sec"><div class="lab">SPECIMEN · CONTAINER · STORAGE</div>';
+    x.specimens.forEach(function(s){t+='<div class="spec"><img src="icons/'+esc(s.icon)+'.png" alt=""><div class="t"><b>'+esc(s.specimen)+'</b><span>'+esc(s.container)+'</span>'+storage(s)+'</div></div>'});
+    t+='</div><div class="sec"><div class="lab">OPTIMAL TIMING</div>'+esc(x.timing)+'</div>';
+    if(x.notes)t+='<div class="sec"><div class="note">'+esc(x.notes)+'</div></div>';
+    t+='</div>';});
+  return t+'<div class="foot">Updated '+esc(D.updated||'')+'</div></div>';
+}
+window.addEventListener('hashchange',route);load();
+</script></body></html>

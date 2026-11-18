@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Test List Admin</title><link rel="stylesheet" href="style.css">
+<style>
+main{max-width:980px}.row{display:flex;flex-wrap:wrap;gap:8px;margin:6px 0}.row>*{flex:1 1 180px}
+label{display:block;font-size:11px;font-weight:800;letter-spacing:.06em;color:var(--mut);margin:6px 0 3px}
+input,select,textarea{width:100%;padding:8px 10px;border:1.5px solid #cfd8de;border-radius:8px;font:inherit;font-size:14px}textarea{min-height:60px}
+button.b{border:0;border-radius:8px;padding:8px 12px;font:inherit;font-size:13px;font-weight:700;cursor:pointer;background:var(--teal);color:#fff}
+button.g{background:var(--grey);color:var(--ink)}button.r{background:#a8322d}button.o{background:var(--orange)}
+.box{border:1.5px solid #dbe3e8;border-radius:12px;padding:12px;margin:10px 0;background:#fff}.box.in{background:var(--grey)}
+.li{display:flex;align-items:center;gap:8px;padding:8px 10px;border:1px solid #e1e7eb;border-radius:10px;margin:6px 0}.li b{flex:1}
+.li img{height:30px}.tabs{display:flex;gap:8px;margin:10px 0}.tabs button{flex:1}.tabs .on{outline:3px solid var(--navy)}
+#msg{position:sticky;top:0;z-index:5;padding:8px 12px;border-radius:8px;margin:8px 0;font-size:14px;display:none}
+.ok{background:#d9f2e3;color:#14532d}.er{background:#fde2e0;color:#7a1f1a}
+.sm{font-size:12px;color:var(--mut)}
+</style></head><body>
+<header><h1>Test List: Admin</h1><p>Edit the lists, then press Publish. Doctors see the change after about a minute.</p></header>
+<main>
+<div id="msg"></div>
+<div class="box" id="pubbox">
+ <b>Publishing settings (saved only in this browser)</b>
+ <div class="row"><div><label>GITHUB USER / ORGANIZATION</label><input id="gh_owner"></div><div><label>REPOSITORY</label><input id="gh_repo"></div>
+ <div><label>BRANCH</label><input id="gh_branch" value="main"></div></div>
+ <label>ACCESS TOKEN (fine-grained, Contents: read and write, this repository only)</label><input id="gh_token" type="password" autocomplete="off">
+ <p class="sm">Only the person who holds this token can change the published list. Never share it.</p>
+</div>
+<div class="row"><button class="b" onclick="publish()">Publish to the site</button><button class="b g" onclick="downloadJSON()">Download data.json</button>
+<button class="b g" onclick="toggleRaw()">Raw JSON</button></div>
+<div id="raw" style="display:none" class="box"><textarea id="rawta" style="min-height:260px;font-family:monospace;font-size:12px"></textarea><div class="row"><button class="b" onclick="applyRaw()">Apply JSON</button></div></div>
+<div class="tabs"><button class="b" id="t_pcr" onclick="tab('pcr')">PCR</button><button class="b" id="t_serology" onclick="tab('serology')">Serology</button></div>
+<div id="view"></div>
+</main>
+<script>
+var D=null,cur='pcr',ed=null;
+var ICONS=['csf','serum','edta','cup','vtm','dryswab','kit'];
+var ICN={csf:'CSF / sterile tube',serum:'Plain tube (serum)',edta:'EDTA tube',cup:'Sterile container',vtm:'Swab in VTM',dryswab:'Dry swab tube',kit:'Kit buffer tube'};
+var PRESETS={std:['2–8 °C, up to 72 h','−70 °C, or −20 °C up to ~10 days'],csf:['2–8 °C, up to 48 h only','−70 °C, or −20 °C up to ~10 days'],wb:['2–8 °C, up to 72 h','Do NOT freeze; extract, store extract at −70 °C'],kit:['Room temperature; test at once','Not applicable']};
+function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+function msg(t,ok){var m=document.getElementById('msg');m.textContent=t;m.className=ok?'ok':'er';m.style.display='block';if(ok)setTimeout(function(){m.style.display='none'},6000)}
+function load(){['owner','repo','branch','token'].forEach(function(k){try{var v=localStorage.getItem('gh_'+k);if(v)document.getElementById('gh_'+k).value=v}catch(e){}});
+ fetch('data.json?'+Date.now()).then(function(r){return r.json()}).then(function(d){D=d;render()}).catch(function(){msg('Could not load data.json',false)})}
+function tab(t){cur=t;ed=null;render()}
+function slug(s){return s.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'')||('item-'+Date.now())}
+function render(){['pcr','serology'].forEach(function(k){document.getElementById('t_'+k).className='b'+(k===cur?'':' g')});
+ var v=document.getElementById('view');var L=D.lists[cur];
+ if(ed!==null){v.innerHTML=editor(L.items[ed]);return}
+ var h='<div class="row"><button class="b o" onclick="addItem()">+ Add a group or test</button></div>';
+ L.items.forEach(function(it,i){var ic=it.icon||'serum';h+='<div class="li"><img src="icons/'+esc(ic)+'.png"><b>'+esc(it.name)+(it.kind==='panel'?' <span class="sm">(panel, '+it.tests.length+' tests)</span>':'')+'</b>'+
+  '<button class="b g" onclick="mv('+i+',-1)">↑</button><button class="b g" onclick="mv('+i+',1)">↓</button><button class="b" onclick="edit('+i+')">Edit</button><button class="b r" onclick="delItem('+i+')">Delete</button></div>'});
+ v.innerHTML=h}
+function mv(i,d){var a=D.lists[cur].items;var j=i+d;if(j<0||j>=a.length)return;var t=a[i];a[i]=a[j];a[j]=t;render()}
+function delItem(i){var a=D.lists[cur].items;if(confirm('Delete "'+a[i].name+'"?')){a.splice(i,1);render()}}
+function edit(i){ed=i;render()}
+function addItem(){D.lists[cur].items.push({id:'new-'+Date.now(),name:'New test',kind:'test',icon:'serum',summary:'',tests:[{name:'New test',timing:'',notes:'',specimens:[{specimen:'',container:'',icon:'serum',first72:PRESETS.std[0],after72:PRESETS.std[1]}]}]});ed=D.lists[cur].items.length-1;render()}
+function opts(arr,sel,lab){return arr.map(function(k){return'<option value="'+k+'"'+(k===sel?' selected':'')+'>'+esc(lab?lab[k]:k)+'</option>'}).join('')}
+function editor(it){
+ var h='<div class="row"><button class="b g" onclick="ed=null;render()">‹ Back to the list</button></div><div class="box"><b>Group or test</b>'+
+ '<div class="row"><div><label>NAME (shown on the tile)</label><input value="'+esc(it.name)+'" oninput="ITEM().name=this.value"></div>'+
+ '<div><label>TYPE</label><select onchange="ITEM().kind=this.value">'+opts(['test','panel'],it.kind)+'</select></div>'+
+ '<div><label>TILE ICON</label><select onchange="ITEM().icon=this.value">'+opts(ICONS,it.icon,ICN)+'</select></div></div>'+
+ '<label>SHORT LINE UNDER THE NAME (optional)</label><input value="'+esc(it.summary)+'" oninput="ITEM().summary=this.value"></div>';
+ it.tests.forEach(function(t,ti){
+  h+='<div class="box in"><div class="row"><b style="flex:3">Test '+(ti+1)+'</b><button class="b g" onclick="mvT('+ti+',-1)">↑</button><button class="b g" onclick="mvT('+ti+',1)">↓</button><button class="b r" onclick="delT('+ti+')">Delete test</button></div>'+
+  '<label>TEST NAME</label><input value="'+esc(t.name)+'" oninput="T('+ti+').name=this.value">'+
+  '<label>OPTIMAL TIMING</label><textarea oninput="T('+ti+').timing=this.value">'+esc(t.timing)+'</textarea>'+
+  '<label>NOTES (optional)</label><textarea oninput="T('+ti+').notes=this.value">'+esc(t.notes)+'</textarea>';
+  t.specimens.forEach(function(s,si){
+   h+='<div class="box"><div class="row"><b style="flex:3">Specimen '+(si+1)+'</b><button class="b g" onclick="mvS('+ti+','+si+',-1)">↑</button><button class="b g" onclick="mvS('+ti+','+si+',1)">↓</button><button class="b r" onclick="delS('+ti+','+si+')">Delete</button></div>'+
+   '<div class="row"><div><label>SPECIMEN</label><input value="'+esc(s.specimen)+'" oninput="S('+ti+','+si+').specimen=this.value"></div>'+
+   '<div><label>CONTAINER</label><input value="'+esc(s.container)+'" oninput="S('+ti+','+si+').container=this.value"></div>'+
+   '<div><label>CONTAINER ICON</label><select onchange="S('+ti+','+si+').icon=this.value">'+opts(ICONS,s.icon,ICN)+'</select></div></div>'+
+   '<div class="row"><div><label>STORAGE PRESET</label><select onchange="preset('+ti+','+si+',this.value)"><option value="">Choose to fill the two fields…</option><option value="std">Standard (serum, plasma, urine, swab, BAL)</option><option value="csf">CSF</option><option value="wb">Whole blood (do not freeze)</option><option value="kit">Rapid kit</option></select></div>'+
+   '<div><label>FIRST 72 HOURS</label><input id="f_'+ti+'_'+si+'" value="'+esc(s.first72)+'" oninput="S('+ti+','+si+').first72=this.value"></div>'+
+   '<div><label>AFTER THAT</label><input id="a_'+ti+'_'+si+'" value="'+esc(s.after72)+'" oninput="S('+ti+','+si+').after72=this.value"></div></div></div>'});
+  h+='<div class="row"><button class="b g" onclick="addS('+ti+')">+ Add a specimen</button></div></div>'});
+ return h+'<div class="row"><button class="b o" onclick="addT()">+ Add a test to this group</button></div>'}
+function ITEM(){return D.lists[cur].items[ed]}function T(i){return ITEM().tests[i]}function S(i,j){return T(i).specimens[j]}
+function preset(ti,si,k){if(!k)return;S(ti,si).first72=PRESETS[k][0];S(ti,si).after72=PRESETS[k][1];document.getElementById('f_'+ti+'_'+si).value=PRESETS[k][0];document.getElementById('a_'+ti+'_'+si).value=PRESETS[k][1]}
+function addS(ti){T(ti).specimens.push({specimen:'',container:'',icon:'serum',first72:PRESETS.std[0],after72:PRESETS.std[1]});render()}
+function delS(ti,si){if(confirm('Delete this specimen?')){T(ti).specimens.splice(si,1);render()}}
+function mvS(ti,si,d){var a=T(ti).specimens,j=si+d;if(j<0||j>=a.length)return;var t=a[si];a[si]=a[j];a[j]=t;render()}
+function addT(){ITEM().tests.push({name:'New test',timing:'',notes:'',specimens:[{specimen:'',container:'',icon:'serum',first72:PRESETS.std[0],after72:PRESETS.std[1]}]});render()}
+function delT(i){if(confirm('Delete this test?')){ITEM().tests.splice(i,1);render()}}
+function mvT(i,d){var a=ITEM().tests,j=i+d;if(j<0||j>=a.length)return;var t=a[i];a[i]=a[j];a[j]=t;render()}
+function clean(){D.lists.pcr.items.concat(D.lists.serology.items).forEach(function(it){if(!it.id||/^new-/.test(it.id))it.id=slug(it.name)});
+ ['pcr','serology'].forEach(function(k){var seen={};D.lists[k].items.forEach(function(it){var b=it.id,n=2;while(seen[it.id]){it.id=b+'-'+n++}seen[it.id]=1})});
+ D.updated=new Date().toISOString().slice(0,10)}
+function json(){clean();return JSON.stringify(D,null,1)}
+function toggleRaw(){var r=document.getElementById('raw');r.style.display=r.style.display==='none'?'block':'none';document.getElementById('rawta').value=json()}
+function applyRaw(){try{D=JSON.parse(document.getElementById('rawta').value);ed=null;render();msg('JSON applied (not yet published).',true)}catch(e){msg('Invalid JSON: '+e.message,false)}}
+function downloadJSON(){var s=json();var a=document.createElement('a');a.href=URL.createObjectURL(new Blob([s],{type:'application/json'}));a.download='data.json';document.body.appendChild(a);a.click();a.remove()}
+function b64(s){var by=new TextEncoder().encode(s),bin='';by.forEach(function(b){bin+=String.fromCharCode(b)});return btoa(bin)}
+function cfg(){var c={};['owner','repo','branch','token'].forEach(function(k){c[k]=document.getElementById('gh_'+k).value.trim();try{localStorage.setItem('gh_'+k,c[k])}catch(e){}});return c}
+async function gh(c,method,path,body){var r=await fetch('https://api.github.com/repos/'+c.owner+'/'+c.repo+'/contents/'+path+(method==='GET'?'?ref='+encodeURIComponent(c.branch):''),{method:method,headers:{'Authorization':'Bearer '+c.token,'Accept':'application/vnd.github+json'},body:body?JSON.stringify(body):undefined});
+ var j=await r.json().catch(function(){return{}});if(!r.ok&&!(method==='GET'&&r.status===404))throw new Error(r.status+' '+(j.message||''));return{status:r.status,j:j}}
+async function publish(){var c=cfg();if(!c.owner||!c.repo||!c.token){msg('Fill in the GitHub user, repository and token first.',false);return}
+ var s=json();try{JSON.parse(s)}catch(e){msg('Data is invalid.',false);return}
+ try{msg('Publishing…',true);var cur0=await gh(c,'GET','data.json');var sha=cur0.status===200?cur0.j.sha:undefined;
+  if(sha){var stamp=new Date().toISOString().replace(/[:.]/g,'-');await gh(c,'PUT','backups/data-'+stamp+'.json',{message:'Backup before update',content:cur0.j.content.replace(/\n/g,''),branch:c.branch})}
+  await gh(c,'PUT','data.json',{message:'Update test list',content:b64(s),sha:sha,branch:c.branch});
+  msg('Published. Doctors will see the update in about a minute. The previous version was saved in the backups folder.',true)}catch(e){msg('Publish failed: '+e.message,false)}}
+load();
+</script></body></html>

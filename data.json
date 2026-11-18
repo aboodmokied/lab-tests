@@ -1,0 +1,1011 @@
+{
+ "title": "Central Laboratory Test List: PCR and Serology",
+ "subtitle": "Palestinian Ministry of Health",
+ "updated": "2026-11-18",
+ "lists": {
+  "pcr": {
+   "title": "PCR tests",
+   "items": [
+    {
+     "id": "bacterial-meningitis",
+     "name": "Bacterial meningitis panel",
+     "kind": "panel",
+     "icon": "csf",
+     "summary": "N. meningitidis · S. pneumoniae · H. influenzae",
+     "tests": [
+      {
+       "name": "Neisseria meningitidis, Streptococcus pneumoniae, Haemophilus influenzae",
+       "timing": "At first assessment, preferably before antibiotics. Do not delay treatment to collect the sample.",
+       "notes": "One CSF tube for the whole panel (at least 400 µL). Serum is useful when lumbar puncture is delayed or not possible. PCR may stay positive after antibiotics but does not replace culture.",
+       "specimens": [
+        {
+         "specimen": "CSF (preferred)",
+         "container": "Sterile, additive-free tube",
+         "icon": "csf",
+         "first72": "2–8 °C, up to 48 h only",
+         "after72": "−70 °C, or −20 °C up to ~10 days"
+        },
+        {
+         "specimen": "Serum",
+         "container": "Plain tube",
+         "icon": "serum",
+         "first72": "2–8 °C, up to 72 h",
+         "after72": "−70 °C, or −20 °C up to ~10 days"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": "viral-meningitis",
+     "name": "Viral meningitis panel",
+     "kind": "panel",
+     "icon": "csf",
+     "summary": "HSV-1/2 · VZV · Enterovirus · Parechovirus · West Nile · Toscana",
+     "tests": [
+      {
+       "name": "HSV-1 / HSV-2",
+       "timing": "As early as possible. If negative within 72 hours of onset and suspicion persists, repeat CSF PCR after 3–7 days.",
+       "notes": "Neonates: send all three specimen types (CSF, whole blood, mucosal swabs). Start treatment without waiting for the result.",
+       "specimens": [
+        {
+         "specimen": "CSF",
+         "container": "Sterile, additive-free tube (≥ 400 µL)",
+         "icon": "csf",
+         "first72": "2–8 °C, up to 48 h only",
+         "after72": "−70 °C, or −20 °C up to ~10 days"
+        },
+        {
+         "specimen": "Lesion swab (oral or genital herpes)",
+         "container": "Swab in VTM",
+         "icon": "vtm",
+         "first72": "2–8 °C, up to 72 h",
+         "after72": "−70 °C, or −20 °C up to ~10 days"
+        },
+        {
+         "specimen": "Neonates: CSF",
+         "container": "Sterile tube",
+         "icon": "csf",
+         "first72": "2–8 °C, up to 48 h only",
+         "after72": "−70 °C, or −20 °C up to ~10 days"
+        },
+        {
+         "specimen": "Neonates: whole blood",
+         "container": "EDTA tube",
+         "icon": "edta",
+         "first72": "2–8 °C, up to 72 h",
+         "after72": "Do NOT freeze; extract, store extract at −70 °C"
+        },
+        {
+         "specimen": "Neonates: mucosal swabs",
+         "container": "Swab in VTM",
+         "icon": "vtm",
+         "first72": "2–8 °C, up to 72 h",
+         "after72": "−70 °C, or −20 °C up to ~10 days"
+        }
+       ]
+      },
+      {
+       "name": "Varicella-Zoster virus (VZV)",
+       "timing": "As early as possible during acute neurological illness.",
+       "notes": "Start treatment without waiting for the result.",
+       "specimens": [
+        {
+         "specimen": "CSF",
+         "container": "Sterile, additive-free tube (≥ 400 µL)",
+         "icon": "csf",
+         "first72": "2–8 °C, up to 48 h only",
+         "after72": "−70 °C, or −20 °C up to ~10 days"
+        },
+        {
+         "specimen": "Lesion swab (varicella or zoster)",
+         "container": "Swab in VTM",
+         "icon": "vtm",
+         "first72": "2–8 °C, up to 72 h",
+         "after72": "−70 °C, or −20 °C up to ~10 days"
+        }
+       ]
+      },
+      {
+       "name": "Enterovirus",
+       "timing": "Collect CSF as early as possible, within the first 3 days of symptoms.",
+       "notes": "A negative result, especially if collected late, does not exclude enterovirus.",
+       "specimens": [
+        {
+         "specimen": "CSF",
+         "container": "Sterile, additive-free tube (≥ 400 µL)",
+         "icon": "csf",
+         "first72": "2–8 °C, up to 48 h only",
+         "after72": "−70 °C, or −20 °C up to ~10 days"
+        },
+        {
+         "specimen": "Lesion swab (preferred) / throat swab",
+         "container": "Swab in VTM",
+         "icon": "vtm",
+         "first72": "2–8 °C, up to 72 h",
+         "after72": "−70 °C, or −20 °C up to ~10 days"
+        },
+        {
+         "specimen": "Neonates: whole blood or plasma",
+         "container": "EDTA tube",
+         "icon": "edta",
+         "first72": "2–8 °C, up to 72 h",
+         "after72": "Do NOT freeze; extract, store extract at −70 °C"
+        }
+       ]
+      },
+      {
+       "name": "Parechovirus",
+       "timing": "Collect CSF as early as possible during acute illness.",
+       "notes": "A negative result does not exclude infection.",
+       "specimens": [
+        {
+         "specimen": "CSF (preferred for meningoencephalitis)",
+         "container": "Sterile, additive-free tube (≥ 400 µL)",
+         "icon": "csf",
+         "first72": "2–8 °C, up to 48 h only",
+         "after72": "−70 °C, or −20 °C up to ~10 days"
+        },
+        {
+         "specimen": "Whole blood or plasma (neonatal sepsis-like illness)",
+         "container": "EDTA tube",
+         "icon": "edta",
+         "first72": "2–8 °C, up to 72 h",
+         "after72": "Do NOT freeze; extract, store extract at −70 °C"
+        }
+       ]
+      },
+      {
+       "name": "West Nile virus",
+       "timing": "As soon as symptoms appear. Collect PCR and IgM samples together; if IgM is negative, repeat after day 8 of symptom onset.",
+       "notes": "IgM is the test of choice for West Nile virus (see Serology).",
+       "specimens": [
+        {
+         "specimen": "CSF",
+         "container": "Sterile, additive-free tube (≥ 400 µL)",
+         "icon": "csf",
+         "first72": "2–8 °C, up to 48 h only",
+         "after72": "−70 °C, or −20 °C up to ~10 days"
+        },
+        {
+         "specimen": "Serum (with CSF)",
+         "container": "Plain tube",
+         "icon": "serum",
+         "first72": "2–8 °C, up to 72 h",
+         "after72": "−70 °C, or −20 °C up to ~10 days"
+        }
+       ]
+      },
+      {
+       "name": "Toscana virus",
+       "timing": "Collect CSF as early as possible during acute illness.",
+       "notes": "A negative result, especially if collected late, does not exclude it.",
+       "specimens": [
+        {
+         "specimen": "CSF",
+         "container": "Sterile, additive-free tube (≥ 400 µL)",
+         "icon": "csf",
+         "first72": "2–8 °C, up to 48 h only",
+         "after72": "−70 °C, or −20 °C up to ~10 days"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": "respiratory-viruses",
+     "name": "Respiratory viruses",
+     "kind": "panel",
+     "icon": "vtm",
+     "summary": "Influenza A & B · RSV · SARS-CoV-2",
+     "tests": [
+      {
+       "name": "Influenza A & B / RSV",
+       "timing": "As early as possible, ideally within the first 3–4 days of symptoms.",
+       "notes": "A negative result late in illness does not exclude infection.",
+       "specimens": [
+        {
+         "specimen": "NP swab",
+         "container": "NP swab in VTM",
+         "icon": "vtm",
+         "first72": "2–8 °C, up to 72 h",
+         "after72": "−70 °C, or −20 °C up to ~10 days"
+        }
+       ]
+      },
+      {
+       "name": "SARS-CoV-2",
+       "timing": "As early as possible, ideally within the first 5 days of symptoms.",
+       "notes": "",
+       "specimens": [
+        {
+         "specimen": "NP swab",
+         "container": "NP swab in VTM",
+         "icon": "vtm",
+         "first72": "2–8 °C, up to 72 h",
+         "after72": "−70 °C, or −20 °C up to ~10 days"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": "bacterial-pneumonia",
+     "name": "Bacterial pneumonia panel",
+     "kind": "panel",
+     "icon": "cup",
+     "summary": "Bordetella · Legionella · Mycoplasma · Chlamydia pneumoniae · Pneumocystis",
+     "tests": [
+      {
+       "name": "Bordetella pertussis",
+       "timing": "Within the first 3 weeks of cough.",
+       "notes": "Swab only; BAL is not accepted for this test.",
+       "specimens": [
+        {
+         "specimen": "NP swab",
+         "container": "NP swab in VTM",
+         "icon": "vtm",
+         "first72": "2–8 °C, up to 72 h",
+         "after72": "−70 °C, or −20 °C up to ~10 days"
+        }
+       ]
+      },
+      {
+       "name": "Legionella pneumophila",
+       "timing": "As early as possible, preferably before antibiotics.",
+       "notes": "PCR on BAL is the test of choice. Sputum is not available at the Central Laboratory.",
+       "specimens": [
+        {
+         "specimen": "Throat swab",
+         "container": "Swab in VTM",
+         "icon": "vtm",
+         "first72": "2–8 °C, up to 72 h",
+         "after72": "−70 °C, or −20 °C up to ~10 days"
+        },
+        {
+         "specimen": "BAL",
+         "container": "Sterile container",
+         "icon": "cup",
+         "first72": "2–8 °C, up to 72 h",
+         "after72": "−70 °C, or −20 °C up to ~10 days"
+        }
+       ]
+      },
+      {
+       "name": "Mycoplasma pneumoniae",
+       "timing": "As early as possible after symptom onset.",
+       "notes": "",
+       "specimens": [
+        {
+         "specimen": "NP swab or throat swab",
+         "container": "Swab in VTM",
+         "icon": "vtm",
+         "first72": "2–8 °C, up to 72 h",
+         "after72": "−70 °C, or −20 °C up to ~10 days"
+        },
+        {
+         "specimen": "BAL",
+         "container": "Sterile container",
+         "icon": "cup",
+         "first72": "2–8 °C, up to 72 h",
+         "after72": "−70 °C, or −20 °C up to ~10 days"
+        }
+       ]
+      },
+      {
+       "name": "Chlamydia pneumoniae",
+       "timing": "As early as possible after symptom onset.",
+       "notes": "",
+       "specimens": [
+        {
+         "specimen": "NP swab or throat swab",
+         "container": "Swab in VTM",
+         "icon": "vtm",
+         "first72": "2–8 °C, up to 72 h",
+         "after72": "−70 °C, or −20 °C up to ~10 days"
+        },
+        {
+         "specimen": "BAL",
+         "container": "Sterile container",
+         "icon": "cup",
+         "first72": "2–8 °C, up to 72 h",
+         "after72": "−70 °C, or −20 °C up to ~10 days"
+        }
+       ]
+      },
+      {
+       "name": "Pneumocystis jirovecii",
+       "timing": "As early as possible, preferably before or early in treatment.",
+       "notes": "BAL only. Sputum is not available at the Central Laboratory.",
+       "specimens": [
+        {
+         "specimen": "BAL",
+         "container": "Sterile container",
+         "icon": "cup",
+         "first72": "2–8 °C, up to 72 h",
+         "after72": "−70 °C, or −20 °C up to ~10 days"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": "hepatitis",
+     "name": "Viral hepatitis panel",
+     "kind": "panel",
+     "icon": "edta",
+     "summary": "HAV · HBV · HCV",
+     "tests": [
+      {
+       "name": "HAV PCR",
+       "timing": "As soon as possible after symptom onset.",
+       "notes": "Supportive only, in outbreaks or when IgM is equivocal. Stool is not available at the Central Laboratory.",
+       "specimens": [
+        {
+         "specimen": "Serum or plasma",
+         "container": "Plain tube",
+         "icon": "serum",
+         "first72": "2–8 °C, up to 72 h",
+         "after72": "−70 °C, or −20 °C up to ~10 days"
+        }
+       ]
+      },
+      {
+       "name": "HBV DNA (quantitative)",
+       "timing": "After a positive HBsAg, and for treatment monitoring.",
+       "notes": "Follow-up, not initial diagnosis.",
+       "specimens": [
+        {
+         "specimen": "EDTA plasma or serum",
+         "container": "EDTA tube",
+         "icon": "edta",
+         "first72": "2–8 °C, up to 72 h",
+         "after72": "−70 °C, or −20 °C up to ~10 days"
+        }
+       ]
+      },
+      {
+       "name": "HCV RNA",
+       "timing": "Symptomatic: after a reactive anti-HCV. After exposure: at 3–6 weeks.",
+       "notes": "Confirms active infection and is used for follow-up.",
+       "specimens": [
+        {
+         "specimen": "Serum or plasma",
+         "container": "Plain tube",
+         "icon": "serum",
+         "first72": "2–8 °C, up to 72 h",
+         "after72": "−70 °C, or −20 °C up to ~10 days"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": "adenovirus",
+     "name": "Adenovirus",
+     "kind": "test",
+     "icon": "vtm",
+     "summary": "",
+     "tests": [
+      {
+       "name": "Adenovirus PCR",
+       "timing": "Collect as early as possible after symptom onset; the virus may persist for weeks.",
+       "notes": "A positive PCR does not always indicate active disease; it may reflect persistent virus from a previous infection. Specimen depends on the clinical picture.",
+       "specimens": [
+        {
+         "specimen": "NP swab (respiratory)",
+         "container": "Swab in VTM",
+         "icon": "vtm",
+         "first72": "2–8 °C, up to 72 h",
+         "after72": "−70 °C, or −20 °C up to ~10 days"
+        },
+        {
+         "specimen": "BAL",
+         "container": "Sterile container",
+         "icon": "cup",
+         "first72": "2–8 °C, up to 72 h",
+         "after72": "−70 °C, or −20 °C up to ~10 days"
+        },
+        {
+         "specimen": "Eye swab (pink eye)",
+         "container": "Swab in VTM",
+         "icon": "vtm",
+         "first72": "2–8 °C, up to 72 h",
+         "after72": "−70 °C, or −20 °C up to ~10 days"
+        },
+        {
+         "specimen": "Plasma or whole blood (disseminated)",
+         "container": "EDTA tube",
+         "icon": "edta",
+         "first72": "2–8 °C, up to 72 h",
+         "after72": "Do NOT freeze; extract, store extract at −70 °C"
+        },
+        {
+         "specimen": "Urine (hemorrhagic cystitis)",
+         "container": "Sterile container",
+         "icon": "cup",
+         "first72": "2–8 °C, up to 72 h",
+         "after72": "−70 °C, or −20 °C up to ~10 days"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": "cmv",
+     "name": "Cytomegalovirus (CMV)",
+     "kind": "test",
+     "icon": "edta",
+     "summary": "",
+     "tests": [
+      {
+       "name": "CMV PCR (quantitative)",
+       "timing": "Transplant recipients (kidney and bone marrow): weekly for about the first 3 months after transplant, or when symptoms appear.",
+       "notes": "Use the same specimen type and assay throughout follow-up.",
+       "specimens": [
+        {
+         "specimen": "Plasma",
+         "container": "EDTA tube",
+         "icon": "edta",
+         "first72": "2–8 °C, up to 72 h",
+         "after72": "−70 °C, or −20 °C up to ~10 days"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": "bk",
+     "name": "BK polyomavirus",
+     "kind": "test",
+     "icon": "edta",
+     "summary": "",
+     "tests": [
+      {
+       "name": "BK polyomavirus (quantitative)",
+       "timing": "Monthly for the first 9 months after transplant, then every 3 months up to 2 years; also with an unexplained creatinine rise.",
+       "notes": "Kidney transplant monitoring.",
+       "specimens": [
+        {
+         "specimen": "Plasma",
+         "container": "EDTA tube",
+         "icon": "edta",
+         "first72": "2–8 °C, up to 72 h",
+         "after72": "−70 °C, or −20 °C up to ~10 days"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": "ebv",
+     "name": "Epstein-Barr virus (EBV)",
+     "kind": "test",
+     "icon": "edta",
+     "summary": "",
+     "tests": [
+      {
+       "name": "EBV PCR",
+       "timing": "To be confirmed.",
+       "notes": "Added to the list.",
+       "specimens": [
+        {
+         "specimen": "Whole blood",
+         "container": "EDTA tube",
+         "icon": "edta",
+         "first72": "2–8 °C, up to 72 h",
+         "after72": "Do NOT freeze; extract, store extract at −70 °C"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": "hpv",
+     "name": "Human papillomavirus (HPV-16)",
+     "kind": "test",
+     "icon": "vtm",
+     "summary": "",
+     "tests": [
+      {
+       "name": "HPV-16",
+       "timing": "Any time; avoid collection during heavy menstrual bleeding.",
+       "notes": "A negative result does not exclude other high-risk HPV types.",
+       "specimens": [
+        {
+         "specimen": "Cervical swab",
+         "container": "Cervical swab in VTM",
+         "icon": "vtm",
+         "first72": "2–8 °C, up to 72 h",
+         "after72": "−70 °C, or −20 °C up to ~10 days"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": "measles-rubella",
+     "name": "Measles / Rubella",
+     "kind": "test",
+     "icon": "vtm",
+     "summary": "",
+     "tests": [
+      {
+       "name": "Measles / Rubella PCR",
+       "timing": "As soon as possible, ideally within the first 3 days of rash onset; acceptable up to day 10.",
+       "notes": "",
+       "specimens": [
+        {
+         "specimen": "Throat swab or NP swab",
+         "container": "Swab in VTM",
+         "icon": "vtm",
+         "first72": "2–8 °C, up to 72 h",
+         "after72": "−70 °C, or −20 °C up to ~10 days"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": "mumps",
+     "name": "Mumps",
+     "kind": "test",
+     "icon": "vtm",
+     "summary": "",
+     "tests": [
+      {
+       "name": "Mumps PCR",
+       "timing": "As early as possible, preferably within the first 3 days of swelling.",
+       "notes": "",
+       "specimens": [
+        {
+         "specimen": "Buccal swab",
+         "container": "Synthetic swab (Dacron or flocked) in VTM",
+         "icon": "vtm",
+         "first72": "2–8 °C, up to 72 h",
+         "after72": "−70 °C, or −20 °C up to ~10 days"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": "leptospira",
+     "name": "Leptospira spp.",
+     "kind": "test",
+     "icon": "edta",
+     "summary": "",
+     "tests": [
+      {
+       "name": "Leptospira PCR",
+       "timing": "First 7 days of symptoms: whole blood. After day 7: urine.",
+       "notes": "A negative PCR does not exclude infection: bacteremia is short and urinary shedding is intermittent.",
+       "specimens": [
+        {
+         "specimen": "Whole blood (first 7 days)",
+         "container": "EDTA tube",
+         "icon": "edta",
+         "first72": "2–8 °C, up to 72 h",
+         "after72": "Do NOT freeze; extract, store extract at −70 °C"
+        },
+        {
+         "specimen": "Urine (after day 7)",
+         "container": "Sterile container",
+         "icon": "cup",
+         "first72": "2–8 °C, up to 72 h",
+         "after72": "−70 °C, or −20 °C up to ~10 days"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": "rickettsia",
+     "name": "Rickettsia spp.",
+     "kind": "test",
+     "icon": "dryswab",
+     "summary": "",
+     "tests": [
+      {
+       "name": "Rickettsia PCR",
+       "timing": "First week of symptoms, preferably before antibiotics; do not delay treatment.",
+       "notes": "",
+       "specimens": [
+        {
+         "specimen": "Whole blood",
+         "container": "EDTA tube",
+         "icon": "edta",
+         "first72": "2–8 °C, up to 72 h",
+         "after72": "Do NOT freeze; extract, store extract at −70 °C"
+        },
+        {
+         "specimen": "Flocked swab from the bite site",
+         "container": "Sterile dry tube",
+         "icon": "dryswab",
+         "first72": "2–8 °C, up to 72 h",
+         "after72": "−70 °C, or −20 °C up to ~10 days"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": "syphilis",
+     "name": "Treponema pallidum (syphilis)",
+     "kind": "test",
+     "icon": "dryswab",
+     "summary": "",
+     "tests": [
+      {
+       "name": "Treponema pallidum PCR",
+       "timing": "While an active lesion is present, before treatment.",
+       "notes": "Full diagnosis requires both PCR and serology (VDRL/RPR).",
+       "specimens": [
+        {
+         "specimen": "Lesion swab",
+         "container": "Flocked swab in a sterile tube",
+         "icon": "dryswab",
+         "first72": "2–8 °C, up to 72 h",
+         "after72": "−70 °C, or −20 °C up to ~10 days"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": "malaria",
+     "name": "Malaria (P. falciparum)",
+     "kind": "test",
+     "icon": "edta",
+     "summary": "",
+     "tests": [
+      {
+       "name": "Malaria PCR",
+       "timing": "Immediately when suspected, preferably before treatment.",
+       "notes": "If negative and suspicion persists, repeat every 24 hours for 3 samples. A blood film remains important.",
+       "specimens": [
+        {
+         "specimen": "Whole blood",
+         "container": "EDTA tube",
+         "icon": "edta",
+         "first72": "2–8 °C, up to 72 h",
+         "after72": "Do NOT freeze; extract, store extract at −70 °C"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": "dengue",
+     "name": "Dengue virus",
+     "kind": "test",
+     "icon": "serum",
+     "summary": "",
+     "tests": [
+      {
+       "name": "Dengue virus PCR",
+       "timing": "Best in the first 7 days of fever.",
+       "notes": "Added to the list.",
+       "specimens": [
+        {
+         "specimen": "Serum",
+         "container": "Plain tube",
+         "icon": "serum",
+         "first72": "2–8 °C, up to 72 h",
+         "after72": "−70 °C, or −20 °C up to ~10 days"
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  "serology": {
+   "title": "Serology tests",
+   "items": [
+    {
+     "id": "hepatitis",
+     "name": "Viral hepatitis panel",
+     "kind": "panel",
+     "icon": "serum",
+     "summary": "HAV IgM · HBsAg · Anti-HBs · Anti-HCV",
+     "tests": [
+      {
+       "name": "HAV IgM",
+       "timing": "Immediately at symptom onset; IgM stays positive for about 6 months.",
+       "notes": "IgM anti-HAV is the test of choice.",
+       "specimens": [
+        {
+         "specimen": "Serum",
+         "container": "Plain tube",
+         "icon": "serum",
+         "first72": "2–8 °C, up to 72 h",
+         "after72": "−70 °C, or −20 °C up to ~10 days"
+        }
+       ]
+      },
+      {
+       "name": "HBsAg",
+       "timing": "Symptoms: at once.",
+       "notes": "The test of choice for diagnosis.",
+       "specimens": [
+        {
+         "specimen": "Serum",
+         "container": "Plain tube",
+         "icon": "serum",
+         "first72": "2–8 °C, up to 72 h",
+         "after72": "−70 °C, or −20 °C up to ~10 days"
+        }
+       ]
+      },
+      {
+       "name": "Anti-HBs",
+       "timing": "After exposure: at once.",
+       "notes": "After exposure: ≥10 mIU/mL = protected.",
+       "specimens": [
+        {
+         "specimen": "Serum",
+         "container": "Plain tube",
+         "icon": "serum",
+         "first72": "2–8 °C, up to 72 h",
+         "after72": "−70 °C, or −20 °C up to ~10 days"
+        }
+       ]
+      },
+      {
+       "name": "Anti-HCV",
+       "timing": "Symptomatic: at presentation. After exposure: within 48 hours, then at 4–6 months.",
+       "notes": "For screening; a positive result needs HCV RNA to confirm active infection.",
+       "specimens": [
+        {
+         "specimen": "Serum",
+         "container": "Plain tube",
+         "icon": "serum",
+         "first72": "2–8 °C, up to 72 h",
+         "after72": "−70 °C, or −20 °C up to ~10 days"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": "hsv",
+     "name": "HSV IgM / IgG",
+     "kind": "test",
+     "icon": "serum",
+     "summary": "",
+     "tests": [
+      {
+       "name": "HSV IgM / IgG",
+       "timing": "Not specified.",
+       "notes": "Not useful for CNS infection.",
+       "specimens": [
+        {
+         "specimen": "Serum",
+         "container": "Plain tube",
+         "icon": "serum",
+         "first72": "2–8 °C, up to 72 h",
+         "after72": "−70 °C, or −20 °C up to ~10 days"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": "cmv",
+     "name": "CMV IgG / IgM",
+     "kind": "test",
+     "icon": "serum",
+     "summary": "",
+     "tests": [
+      {
+       "name": "CMV IgG / IgM",
+       "timing": "IgG: before transplant, for risk assessment only. IgM: at presentation with a mononucleosis-like illness.",
+       "notes": "",
+       "specimens": [
+        {
+         "specimen": "Serum",
+         "container": "Plain tube",
+         "icon": "serum",
+         "first72": "2–8 °C, up to 72 h",
+         "after72": "−70 °C, or −20 °C up to ~10 days"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": "wnv",
+     "name": "West Nile virus IgM",
+     "kind": "test",
+     "icon": "serum",
+     "summary": "",
+     "tests": [
+      {
+       "name": "West Nile virus IgM",
+       "timing": "As soon as symptoms appear, together with the PCR. If IgM is negative, repeat after day 8 of symptom onset.",
+       "notes": "IgM is the test of choice; CSF IgM strongly supports neuroinvasive disease. Serum IgM may persist for months.",
+       "specimens": [
+        {
+         "specimen": "CSF",
+         "container": "Sterile, additive-free tube",
+         "icon": "csf",
+         "first72": "2–8 °C, up to 48 h only",
+         "after72": "−70 °C, or −20 °C up to ~10 days"
+        },
+        {
+         "specimen": "Serum",
+         "container": "Plain tube",
+         "icon": "serum",
+         "first72": "2–8 °C, up to 72 h",
+         "after72": "−70 °C, or −20 °C up to ~10 days"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": "pertussis",
+     "name": "Bordetella pertussis IgM",
+     "kind": "test",
+     "icon": "serum",
+     "summary": "",
+     "tests": [
+      {
+       "name": "Bordetella pertussis IgM",
+       "timing": "Weeks 2–8 of cough.",
+       "notes": "Limited accuracy.",
+       "specimens": [
+        {
+         "specimen": "Serum",
+         "container": "Plain tube",
+         "icon": "serum",
+         "first72": "2–8 °C, up to 72 h",
+         "after72": "−70 °C, or −20 °C up to ~10 days"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": "legionella",
+     "name": "Legionella IgM",
+     "kind": "test",
+     "icon": "serum",
+     "summary": "",
+     "tests": [
+      {
+       "name": "Legionella IgM",
+       "timing": "At presentation; antibodies may take weeks to appear.",
+       "notes": "Limited role in acute diagnosis.",
+       "specimens": [
+        {
+         "specimen": "Serum",
+         "container": "Plain tube",
+         "icon": "serum",
+         "first72": "2–8 °C, up to 72 h",
+         "after72": "−70 °C, or −20 °C up to ~10 days"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": "sars2",
+     "name": "SARS-CoV-2 rapid antigen",
+     "kind": "test",
+     "icon": "kit",
+     "summary": "",
+     "tests": [
+      {
+       "name": "SARS-CoV-2 rapid antigen",
+       "timing": "Within the first 5 days of symptoms.",
+       "notes": "Test immediately, per kit instructions. Less sensitive than PCR: if negative and suspicion persists, confirm by PCR.",
+       "specimens": [
+        {
+         "specimen": "Swab supplied with the kit",
+         "container": "Kit extraction buffer tube",
+         "icon": "kit",
+         "first72": "Room temperature; test at once",
+         "after72": "Not applicable"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": "measles",
+     "name": "Measles IgM / IgG",
+     "kind": "test",
+     "icon": "serum",
+     "summary": "",
+     "tests": [
+      {
+       "name": "Measles IgM / IgG",
+       "timing": "IgM and first IgG: at the first visit, with the PCR swab. Second IgG: about 2 weeks later.",
+       "notes": "A negative IgM in the first 3 days of rash does not exclude infection.",
+       "specimens": [
+        {
+         "specimen": "Serum",
+         "container": "Plain tube",
+         "icon": "serum",
+         "first72": "2–8 °C, up to 72 h",
+         "after72": "−70 °C, or −20 °C up to ~10 days"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": "rubella",
+     "name": "Rubella IgM / IgG",
+     "kind": "test",
+     "icon": "serum",
+     "summary": "",
+     "tests": [
+      {
+       "name": "Rubella IgM / IgG",
+       "timing": "IgM and first IgG: at the first visit, with the PCR swab. Second IgG: about 2 weeks later.",
+       "notes": "Paired IgG about 2 weeks apart.",
+       "specimens": [
+        {
+         "specimen": "Serum",
+         "container": "Plain tube",
+         "icon": "serum",
+         "first72": "2–8 °C, up to 72 h",
+         "after72": "−70 °C, or −20 °C up to ~10 days"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": "mumps",
+     "name": "Mumps IgM",
+     "kind": "test",
+     "icon": "serum",
+     "summary": "",
+     "tests": [
+      {
+       "name": "Mumps IgM",
+       "timing": "With the PCR at the first visit; if collected before day 3 of swelling and negative, repeat after day 3.",
+       "notes": "A negative IgM does not exclude mumps.",
+       "specimens": [
+        {
+         "specimen": "Serum",
+         "container": "Plain tube",
+         "icon": "serum",
+         "first72": "2–8 °C, up to 72 h",
+         "after72": "−70 °C, or −20 °C up to ~10 days"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": "brucella",
+     "name": "Brucella IgM",
+     "kind": "test",
+     "icon": "serum",
+     "summary": "",
+     "tests": [
+      {
+       "name": "Brucella IgM",
+       "timing": "At presentation in the acute phase.",
+       "notes": "If negative and suspicion persists, repeat after 2 weeks.",
+       "specimens": [
+        {
+         "specimen": "Serum",
+         "container": "Plain tube",
+         "icon": "serum",
+         "first72": "2–8 °C, up to 72 h",
+         "after72": "−70 °C, or −20 °C up to ~10 days"
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

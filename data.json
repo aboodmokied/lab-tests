@@ -1,41 +1,11 @@
 {
  "title": "Central Laboratory Test List: PCR and Serology",
  "subtitle": "Palestinian Ministry of Health",
- "updated": "2026-11-18",
+ "updated": "2026-11-21",
  "lists": {
   "pcr": {
    "title": "PCR tests",
    "items": [
-    {
-     "id": "bacterial-meningitis",
-     "name": "Bacterial meningitis panel",
-     "kind": "panel",
-     "icon": "csf",
-     "summary": "N. meningitidis · S. pneumoniae · H. influenzae",
-     "tests": [
-      {
-       "name": "Neisseria meningitidis, Streptococcus pneumoniae, Haemophilus influenzae",
-       "timing": "At first assessment, preferably before antibiotics. Do not delay treatment to collect the sample.",
-       "notes": "One CSF tube for the whole panel (at least 400 µL). Serum is useful when lumbar puncture is delayed or not possible. PCR may stay positive after antibiotics but does not replace culture.",
-       "specimens": [
-        {
-         "specimen": "CSF (preferred)",
-         "container": "Sterile, additive-free tube",
-         "icon": "csf",
-         "first72": "2–8 °C, up to 48 h only",
-         "after72": "−70 °C, or −20 °C up to ~10 days"
-        },
-        {
-         "specimen": "Serum",
-         "container": "Plain tube",
-         "icon": "serum",
-         "first72": "2–8 °C, up to 72 h",
-         "after72": "−70 °C, or −20 °C up to ~10 days"
-        }
-       ]
-      }
-     ]
-    },
     {
      "id": "viral-meningitis",
      "name": "Viral meningitis panel",
@@ -186,6 +156,36 @@
          "container": "Sterile, additive-free tube (≥ 400 µL)",
          "icon": "csf",
          "first72": "2–8 °C, up to 48 h only",
+         "after72": "−70 °C, or −20 °C up to ~10 days"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": "bacterial-meningitis",
+     "name": "Bacterial meningitis panel",
+     "kind": "panel",
+     "icon": "csf",
+     "summary": "N. meningitidis · S. pneumoniae · H. influenzae",
+     "tests": [
+      {
+       "name": "Neisseria meningitidis, Streptococcus pneumoniae, Haemophilus influenzae",
+       "timing": "At first assessment, preferably before antibiotics. Do not delay treatment to collect the sample.",
+       "notes": "One CSF tube for the whole panel (at least 400 µL). Serum is useful when lumbar puncture is delayed or not possible. PCR may stay positive after antibiotics but does not replace culture.",
+       "specimens": [
+        {
+         "specimen": "CSF (preferred)",
+         "container": "Sterile, additive-free tube",
+         "icon": "csf",
+         "first72": "2–8 °C, up to 48 h only",
+         "after72": "−70 °C, or −20 °C up to ~10 days"
+        },
+        {
+         "specimen": "Serum",
+         "container": "Plain tube",
+         "icon": "serum",
+         "first72": "2–8 °C, up to 72 h",
          "after72": "−70 °C, or −20 °C up to ~10 days"
         }
        ]
